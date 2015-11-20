@@ -30,17 +30,18 @@ static NSString *cellId = @"columnCell";
     [super viewDidLoad];
     self.view.backgroundColor=[UIColor whiteColor];
     [self initCollectionView];
-    
+    [self showLoadView];
     [self loadNetData];
 }
 
 - (void)loadNetData
 {
-    [self showLoadView];
     
     self.dataSource = [NSMutableArray array];
     [[NetworkTool sharedNetworkTool] netColumnSuccess:^(NSArray *data) {
-        [self hidenLoadView];
+        if (self.waitView) {
+            [self hidenLoadView];
+        }
         self.dataSource = (NSMutableArray *)data;
         [self.collectionView reloadData];
     } failure:^(NSError *erro) {
@@ -67,12 +68,12 @@ static NSString *cellId = @"columnCell";
 }
 
 #pragma mark UICollectionViewDelegateFlowLayout
-
 #pragma mark ZWwaterFlowDelegate
 - (CGFloat)ZWwaterFlow:(ZWCollectionViewFlowLayout *)waterFlow heightForWidth:(CGFloat)width atIndexPath:(NSIndexPath *)indexPach
 {
-    return 187;
+    return width*1.618;
 }
+
 #pragma mark UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {

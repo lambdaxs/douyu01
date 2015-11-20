@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class XSOnlineModel;
+@class roomModel;
 @interface XSMainCell : UICollectionViewCell
 
-@property (nonatomic,strong) XSOnlineModel *onlineModel;
+@property (nonatomic,strong) roomModel *roomModel;
 
 @end

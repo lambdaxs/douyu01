@@ -9,13 +9,18 @@
 #import "XSHttpTool.h"
 #import "AFNetworking.h"
 
-
 @implementation XSHttpTool
 
-+ (void)GET:(NSString *)URLStr param:(id)param success:(void (^)(id))success failure:(void (^)(NSError *))failure
++ (void)GET:(NSString *)URLStr
+      param:(id)param
+    success:(void (^)(id))success
+    failure:(void (^)(NSError *))failure
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:URLStr parameters:param success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    
+    [manager GET:URLStr
+      parameters:param
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (success) {
             success(responseObject);
         }
@@ -26,10 +31,16 @@
     }];
 }
 
-+ (void)POST:(NSString *)URLStr param:(id)param success:(void (^)(id))success failure:(void (^)(NSError *))failure
++ (void)POST:(NSString *)URLStr
+       param:(id)param
+     success:(void (^)(id))success
+     failure:(void (^)(NSError *))failure
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager POST:URLStr parameters:param success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    
+    [manager POST:URLStr
+       parameters:param
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (success) {
             success(responseObject);
         }

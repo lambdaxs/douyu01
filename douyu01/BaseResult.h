@@ -7,27 +7,33 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MJExtension.h"
+
 @interface BaseResult : NSObject
 @property (nonatomic,strong) NSArray *data;
 @property (nonatomic,strong) NSString *error;
 @end
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>首页
-@interface HomeResult : BaseResult
+@interface HomeResult : BaseResult<MJKeyValue>
+
+@end
+
+@interface HomeTopResult : BaseResult<MJKeyValue>
 
 @end
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>栏目
-@interface ColumnResult : BaseResult
+@interface ColumnResult : BaseResult<MJKeyValue>
 
 @end
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>直播
-@interface OnlineResult : BaseResult
+@interface OnlineResult : BaseResult<MJKeyValue>
 
 @end
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>我
-@interface MineResult : BaseResult
+@interface MineResult : BaseResult<MJKeyValue>
 
 @end

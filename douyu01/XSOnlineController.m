@@ -8,31 +8,17 @@
 
 #import "XSOnlineController.h"
 
-#import "XSMainCell.h"
-#import "XSOnlineModel.h"
-#import "ZWCollectionViewFlowLayout.h"
-
-#import "NetworkTool.h"
-#import "MJRefresh.h"
-
-@interface XSOnlineController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,ZWwaterFlowDelegate>
-
-@property (nonatomic,strong) UICollectionView *collectionView;  ///< 集合视图
-@property (nonatomic,strong) NSMutableArray   *dataSource;
-
-@end
-
 static NSString *cellId = @"onlineCell";
 
-@implementation XSOnlineController{
-    NSInteger _times;
-}
+@implementation XSOnlineController
+
 #pragma mark - 生命周期
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [self initCollectionView];
 }
+
 #pragma mark - 实现代理方法
 #pragma mark UICollectionViewDataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -47,7 +33,7 @@ static NSString *cellId = @"onlineCell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     XSMainCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
-    cell.onlineModel = self.dataSource[indexPath.row];
+    cell.roomModel = self.dataSource[indexPath.row];
     return cell;
 }
 
@@ -60,7 +46,7 @@ static NSString *cellId = @"onlineCell";
 #pragma mark ZWwaterFlowDelegate
 - (CGFloat)ZWwaterFlow:(ZWCollectionViewFlowLayout *)waterFlow heightForWidth:(CGFloat)width atIndexPath:(NSIndexPath *)indexPach
 {/** 返回item高度 */
-    return 150*0.7;
+    return width*0.618;
 }
 
 #pragma mark - 网络请求
@@ -77,6 +63,7 @@ static NSString *cellId = @"onlineCell";
         [self.dataSource addObjectsFromArray:data];
         [self.collectionView reloadData];
     } failure:^(NSError *error) {
+        [self.collectionView headerEndRefreshing];
         NSLog(@"%@",error);
     }];
 }

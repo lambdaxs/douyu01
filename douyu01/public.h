@@ -11,7 +11,7 @@
 
 
 //相对iphone6 屏幕比
-#define KWidth_Scale    [UIScreen mainScreen].bounds.size.width/375.0f
+#define KWidth    [UIScreen mainScreen].bounds.size.width
 
 #define TabBar_T_Color RGB(244, 89, 27)
 

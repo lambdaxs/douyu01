@@ -13,16 +13,29 @@
 
 singleton_interface(NetworkTool)
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>首页
+/** 获取首页顶部banner数据 */
+- (void)netHomeTopSuccess:(void(^)(NSArray *tops))success
+                  failure:(void(^)(NSError *error))failure;
 
-
+/** 获得首页数据 */
+- (void)netHomeSuccess:(void(^)(NSArray *data))success
+               failure:(void(^)(NSError *error))failure;
+/** 获得首页某频道所有数据 */
+- (void)netHomeWithCateId:(NSString *)cateId
+                    times:(NSInteger)times
+                  success:(void(^)(NSArray *data))success
+                  failure:(void(^)(NSError *error))failure;
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>栏目
-/** 获取栏目信息 */
-- (void)netColumnSuccess:(void(^)(NSArray *data))success failure:(void(^)(NSError *error))failure;
+/** 获取所有栏目信息 */
+- (void)netColumnSuccess:(void(^)(NSArray *data))success
+                 failure:(void(^)(NSError *error))failure;
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>直播
-/** 获取直播信息 times是下拉次数*/
-- (void)netOnlineWithTimes:(NSInteger)times success:(void(^)(NSArray *data))success failure:(void(^)(NSError *error))failure;
+/** 获取所有直播信息*/
+- (void)netOnlineWithTimes:(NSInteger)times
+                   success:(void(^)(NSArray *data))success
+                   failure:(void(^)(NSError *error))failure;
 
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>我

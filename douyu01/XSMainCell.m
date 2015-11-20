@@ -8,8 +8,7 @@
 
 #import "XSMainCell.h"
 
-#import "XSOnlineModel.h"
-
+#import "HomeModel.h"
 #import "UIImageView+WebCache.h"
 
 @interface XSMainCell ()
@@ -21,19 +20,19 @@
 
 @implementation XSMainCell
 
-- (void)setOnlineModel:(XSOnlineModel *)onlineModel
+- (void)setRoomModel:(roomModel *)roomModel
 {
-    _onlineModel = onlineModel;
+    _roomModel = roomModel;
     /** 房间名字 */
-    self.roomName.text = onlineModel.room_name;
+    self.roomName.text = roomModel.room_name;
     /** 主播名字 */
-    self.nickName.text = onlineModel.nickname;
+    self.nickName.text = roomModel.nickname;
     /** 观看人数 */
-    self.online.text = onlineModel.online;
+    self.online.text = roomModel.online;
     /** 设置图片 */
-    [self.imageView sd_setImageWithURL:[NSURL URLWithString:onlineModel.room_src] placeholderImage:[UIImage imageNamed:@"Img_default"]];
-    
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:roomModel.room_src] placeholderImage:[UIImage imageNamed:@"Img_default"]];
 }
+
 
 
 @end

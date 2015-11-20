@@ -8,6 +8,8 @@
 
 #import "BaseParam.h"
 
+#import "NSString+NowDate.h"
+
 @implementation BaseParam
 - (NSString *)aid
 {
@@ -26,8 +28,12 @@
 
 - (NSString *)time
 {
-    return @"1446450360";
+//    return @"1446450360";
+    return [NSString getCurrentTime];
 }
+@end
+
+@implementation HomeParam
 @end
 
 @implementation ColumnParam

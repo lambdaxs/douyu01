@@ -9,14 +9,24 @@
 #import "BaseResult.h"
 
 #import "XSColumnModel.h"
-#import "XSOnlineModel.h"
+#import "HomeModel.h"
 
 @implementation BaseResult
+
 @end
 
 @implementation HomeResult
++ (NSDictionary *)objectClassInArray
+{
+    return @{@"data":[HomeModel class]};
+}
+@end
 
-
+@implementation HomeTopResult
++ (NSDictionary *)objectClassInArray
+{
+    return @{@"data":[HomeTopModel class]};
+}
 @end
 
 @implementation ColumnResult
@@ -29,7 +39,7 @@
 @implementation OnlineResult
 + (NSDictionary *)objectClassInArray
 {
-    return @{@"data":[XSOnlineModel class]};
+    return @{@"data":[roomModel class]};
 }
 @end
 
